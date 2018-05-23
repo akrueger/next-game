@@ -1,0 +1,12 @@
+.container {
+  display: grid;
+  grid-template-columns: 1fr 400px 1fr;
+}
+
+.text-404 {
+  font-size: 140px;
+}
+
+.text {
+  font-size: 48px;
+}
