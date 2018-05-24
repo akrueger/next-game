@@ -1,5 +1,6 @@
 const express = require('express')
 const helmet = require('helmet')
+const redirectToHTTPS = require('express-http-to-https').redirectToHTTPS
 const compression = require('compression')
 const path = require('path')
 const http = require('http')
@@ -38,6 +39,9 @@ app.use(
     xssFilter: true
   })
 )
+
+// HTTPS
+app.use(redirectToHTTPS())
 
 // Auth0
 app.use(jwtCheck)
