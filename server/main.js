@@ -47,7 +47,7 @@ app.use(redirectToHTTPS())
 // app.use(jwtCheck)
 
 // Gzip
-app.use(compression())
+// app.use(compression())
 
 // Request / Response parsers
 app.use(express.json())
