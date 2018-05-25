@@ -14,6 +14,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "precommit": "lint-staged",
+    "prepush": "yarn build",
     "packages-health-check": "yarn nsp check && yarn snyk test",
     "heroku-postbuild": "ng build --prod",
     "db:backup:schema": "pg_dump --file 'db/backups/next-game-schema.sql' --host 'localhost' --port '5432' --username 'akrueger' --no-password --verbose --format=p --schema-only --no-owner --create --clean --no-privileges --no-tablespaces --no-unlogged-table-data 'next-game'",
