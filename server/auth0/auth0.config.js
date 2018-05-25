@@ -1,7 +1,6 @@
 const jwt = require('express-jwt')
 const jwks = require('jwks-rsa')
-console.log('process.env', process.env)
-console.log('NODE_ENV', process.NODE_ENV)
+const environment = process.env.NODE_ENV
 
 const jwtCheck = jwt({
   secret: jwks.expressJwtSecret({
@@ -10,7 +9,10 @@ const jwtCheck = jwt({
     jwksRequestsPerMinute: 5,
     jwksUri: 'https://app63125392.auth0.com/.well-known/jwks.json'
   }),
-  audience: 'https://next-game-pls.herokuapp.com/api/',
+  audience:
+    environment === 'production'
+      ? 'https://next-game-pls.herokuapp.com/api/'
+      : 'http://localhost:3001/api/',
   issuer: 'https://app63125392.auth0.com/',
   algorithms: ['RS256']
 })
