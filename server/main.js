@@ -44,7 +44,7 @@ app.use(
 app.use(redirectToHTTPS())
 
 // Auth0
-// app.use(jwtCheck)
+app.use(jwtCheck)
 
 // Gzip
 app.use(compression())
