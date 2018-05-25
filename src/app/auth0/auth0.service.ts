@@ -6,17 +6,23 @@ import { BehaviorSubject } from 'rxjs'
 import * as Auth0 from 'auth0-js'
 // Models
 import { User } from './user.model'
+// Configuration
+import { environment } from '../../environments/environment'
 // Hack
 ;(window as any).global = window // https://github.com/auth0/auth0.js/issues/753
 
 @Injectable()
 export class Auth0Service {
   private auth0 = new Auth0.WebAuth({
-    clientID: 'tOFlFsZjXtwJD1q2XdvBfZx6rMPVtckH',
-    domain: 'indigo-squid.auth0.com',
+    clientID: 'bYYDsiHz-do-L996f9CoV8weqU32lbNE',
+    domain: 'app63125392.auth0.com',
     responseType: 'token id_token',
-    audience: 'http://localhost:3001/api/',
-    redirectUri: 'http://localhost:4200/auth0-resolution',
+    audience: environment.production
+      ? 'https://next-game-pls.herokuapp.com/api/'
+      : 'http://localhost:3001/api/',
+    redirectUri: environment.production
+      ? 'https://next-game-pls.herokuapp.com/auth0-resolution'
+      : 'http://localhost:4200/auth0-resolution',
     scope: 'openid'
   })
   user: User
@@ -27,6 +33,7 @@ export class Auth0Service {
   loggedIn$ = new BehaviorSubject<boolean>(this.loggedIn)
 
   constructor() {
+    console.log(this.auth0)
     // You can restore an unexpired authentication session on init
     // by using the checkSession() endpoint from auth0.js:
     // https://auth0.com/docs/libraries/auth0js/v9#using-checksession-to-acquire-new-tokens

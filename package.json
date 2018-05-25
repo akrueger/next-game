@@ -1,6 +1,11 @@
 {
   "name": "next-game",
   "version": "0.0.0",
+  "private": true,
+  "engines": {
+    "node": "8.11.1",
+    "yarn": "1.6.0"
+  },
   "scripts": {
     "serve": "ng serve",
     "start": "node ./server/main.js",
@@ -8,6 +13,7 @@
     "test": "snyk test && ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
+    "precommit": "lint-staged",
     "packages-health-check": "yarn nsp check && yarn snyk test",
     "heroku-postbuild": "ng build --prod",
     "db:backup:schema": "pg_dump --file 'db/backups/next-game-schema.sql' --host 'localhost' --port '5432' --username 'akrueger' --no-password --verbose --format=p --schema-only --no-owner --create --clean --no-privileges --no-tablespaces --no-unlogged-table-data 'next-game'",
@@ -15,10 +21,13 @@
     "db:restore:schema": "psql -f db/backups/next-game-schema.sql",
     "db:restore:data": "psql -d next-game -f db/backups/next-game-data.sql"
   },
-  "private": true,
-  "engines": {
-    "node": "8.11.1",
-    "yarn": "1.6.0"
+  "lint-staged": {
+    "*.+(ts|js|json)": [
+      "prettier --write"
+    ],
+    "*.ts": [
+      "tslint -p ./tsconfig.json"
+    ]
   },
   "dependencies": {
     "@angular/animations": "^6.0.0",
