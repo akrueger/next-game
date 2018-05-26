@@ -44,7 +44,7 @@ app.use(
 app.use(redirectToHTTPS())
 
 // Auth0
-app.use(jwtCheck).unless({ path: ['/', '/home'] })
+app.use(jwtCheck)
 
 // Gzip
 app.use(compression())
