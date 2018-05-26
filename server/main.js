@@ -16,35 +16,35 @@ const environment = app.get('env')
 const port = process.env.PORT || '3001'
 app.set('port', port)
 
-// Security
-// app.use(
-//   helmet({
-//     expectCt: true,
-//     dnsPrefetchControl: true,
-//     frameguard: true,
-//     hidePoweredBy: true,
-//     hpkp: {
-//       maxAge: 7776000,
-//       sha256s: ['AbCdEf123=', 'ZyXwVu456=']
-//     },
-//     hsts: {
-//       maxAge: 31536000,
-//       includeSubDomains: true,
-//       preload: true
-//     },
-//     ieNoOpen: true,
-//     noCache: true,
-//     noSniff: true,
-//     referrerPolicy: true,
-//     xssFilter: true
-//   })
-// )
+Security
+app.use(
+  helmet({
+    expectCt: true,
+    dnsPrefetchControl: true,
+    frameguard: true,
+    hidePoweredBy: true,
+    hpkp: {
+      maxAge: 7776000,
+      sha256s: ['AbCdEf123=', 'ZyXwVu456=']
+    },
+    hsts: {
+      maxAge: 31536000,
+      includeSubDomains: true,
+      preload: true
+    },
+    ieNoOpen: true,
+    noCache: true,
+    noSniff: true,
+    referrerPolicy: true,
+    xssFilter: true
+  })
+)
 
 // HTTPS
 app.use(redirectToHTTPS())
 
 // Auth0
-app.use(jwtCheck)
+app.use(jwtCheck).unless({ path: ['/', '/home'] })
 
 // Gzip
 app.use(compression())
