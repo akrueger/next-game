@@ -1,1 +1,7 @@
-<section>dashboard</section>
+<section>
+  <h1>dashboard</h1>
+
+  <button mat-raised-button color="primary" (click)="getGames()">Request games</button>
+  <div>{{games$ | async | json}}</div>
+
+</section>

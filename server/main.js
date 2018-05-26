@@ -6,7 +6,7 @@ const path = require('path')
 const http = require('http')
 const massive = require('massive')
 const parseDbConnectionString = require('pg-connection-string').parse
-const jwtCheck = require('./auth0/auth0.config')
+const jwtCheck = require('./api/auth0/auth0.config')
 const api = require('./api/root')
 
 const app = express()
@@ -41,10 +41,7 @@ app.use(
 )
 
 // HTTPS
-app.use(redirectToHTTPS())
-
-// Auth0
-// app.use(jwtCheck)
+app.use(redirectToHTTPS([/localhost:4200/]))
 
 // Gzip
 app.use(compression())
@@ -56,8 +53,8 @@ app.use(express.urlencoded({ extended: false }))
 // Angular DIST output folder
 app.use(express.static(path.join(__dirname, '../dist/next-game')))
 
-// REST API endpoints
-app.use('/api', api)
+// REST API endpoints with auth0 protection
+app.use('/api', jwtCheck, api)
 
 // Fall-through: send all other requests to the Angular app
 app.get('*', (request, response) => {
