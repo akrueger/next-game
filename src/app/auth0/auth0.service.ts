@@ -33,7 +33,6 @@ export class Auth0Service {
   loggedIn$ = new BehaviorSubject<boolean>(this.loggedIn)
 
   constructor() {
-    console.log(this.auth0)
     // You can restore an unexpired authentication session on init
     // by using the checkSession() endpoint from auth0.js:
     // https://auth0.com/docs/libraries/auth0js/v9#using-checksession-to-acquire-new-tokens
