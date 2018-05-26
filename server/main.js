@@ -16,7 +16,7 @@ const environment = app.get('env')
 const port = process.env.PORT || '3001'
 app.set('port', port)
 
-Security
+// Security
 app.use(
   helmet({
     expectCt: true,
