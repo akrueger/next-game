@@ -1,9 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
 @import './material-theme.scss';
-@import url('https://fonts.googleapis.com/css?family=Lato');
+@import url('https://fonts.googleapis.com/css?family=Lato|Roboto+Mono');
 
 body {
   font-family: 'Lato';
+}
+
+button {
+  letter-spacing: 3px;
 }
 
 .gray-blur {
