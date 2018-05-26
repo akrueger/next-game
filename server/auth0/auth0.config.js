@@ -15,6 +15,6 @@ const jwtCheck = jwt({
       : 'http://localhost:3001/api/',
   issuer: 'https://app63125392.auth0.com/',
   algorithms: ['RS256']
-}).unless({ path: ['/', '/home'] })
+})
 
 module.exports = jwtCheck
