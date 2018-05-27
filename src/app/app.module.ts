@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app.routing'
 // Material
 import { MatInputModule } from '@angular/material/input'
 import { MatButtonModule } from '@angular/material/button'
+import { MatIconModule } from '@angular/material/icon'
 // Components
 import { AppComponent } from './app.component'
 import { HeaderComponent } from './header/header.component'
@@ -45,6 +46,7 @@ import { AuthGuard } from './auth0/auth.guard'
     BrowserModule,
     MatInputModule,
     MatButtonModule,
+    MatIconModule,
     BrowserAnimationsModule,
     HttpClientModule,
     ReactiveFormsModule,
