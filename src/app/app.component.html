@@ -4,6 +4,8 @@
 
   <div [ngClass]="{ 'gray-blur': isLoading$ | async}">
 
+    <app-header></app-header>
+
     <router-outlet></router-outlet>
 
   </div>

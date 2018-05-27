@@ -11,6 +11,7 @@ import { MatInputModule } from '@angular/material/input'
 import { MatButtonModule } from '@angular/material/button'
 // Components
 import { AppComponent } from './app.component'
+import { HeaderComponent } from './header/header.component'
 import { HomeComponent } from './home/home.component'
 import { DashboardComponent } from './dashboard/dashboard.component'
 import { ProfileComponent } from './profile/profile.component'
@@ -30,6 +31,7 @@ import { AuthGuard } from './auth0/auth.guard'
 @NgModule({
   declarations: [
     AppComponent,
+    HeaderComponent,
     HomeComponent,
     DashboardComponent,
     ProfileComponent,

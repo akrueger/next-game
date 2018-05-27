@@ -1,0 +1,9 @@
+@import '../../styles/variables';
+
+.grid-container {
+  display: grid;
+  background-color: $mainPurple;
+  padding: 10px;
+  grid-template-columns: 60px 1fr 60px 60px;
+  justify-items: center;
+}
