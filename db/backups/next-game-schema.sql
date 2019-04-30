@@ -5,7 +5,7 @@
 -- Dumped from database version 11.2
 -- Dumped by pg_dump version 11.2
 
--- Started on 2019-04-28 14:05:57 CDT
+-- Started on 2019-04-28 14:44:48 CDT
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -47,7 +47,7 @@ SET default_with_oids = false;
 
 CREATE TABLE public.games (
     game_id smallint NOT NULL,
-    name character varying(500) NOT NULL
+    game_name character varying(500) NOT NULL
 );
 
 
@@ -81,7 +81,7 @@ ALTER SEQUENCE public.games_game_id_seq OWNED BY public.games.game_id;
 
 CREATE TABLE public.groups (
     group_id smallint NOT NULL,
-    name character varying(150) NOT NULL
+    group_name character varying(150) NOT NULL
 );
 
 
@@ -358,7 +358,7 @@ ALTER TABLE ONLY public.users_games
     ADD CONSTRAINT users_games_user_id_fkey FOREIGN KEY (user_id) REFERENCES public.users(user_id) ON UPDATE CASCADE ON DELETE CASCADE;
 
 
--- Completed on 2019-04-28 14:05:57 CDT
+-- Completed on 2019-04-28 14:44:49 CDT
 
 --
 -- PostgreSQL database dump complete

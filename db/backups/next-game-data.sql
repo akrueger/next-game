@@ -5,7 +5,7 @@
 -- Dumped from database version 11.2
 -- Dumped by pg_dump version 11.2
 
--- Started on 2019-04-28 14:06:01 CDT
+-- Started on 2019-04-28 14:44:58 CDT
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -23,7 +23,7 @@ SET row_security = off;
 -- Data for Name: games; Type: TABLE DATA; Schema: public; Owner: akrueger
 --
 
-COPY public.games (game_id, name) FROM stdin;
+COPY public.games (game_id, game_name) FROM stdin;
 1	Puerto Rico
 2	Netrunner
 3	Agricola
@@ -36,7 +36,7 @@ COPY public.games (game_id, name) FROM stdin;
 -- Data for Name: groups; Type: TABLE DATA; Schema: public; Owner: akrueger
 --
 
-COPY public.groups (group_id, name) FROM stdin;
+COPY public.groups (group_id, group_name) FROM stdin;
 1	Dads
 2	MakerSquare
 3	France
@@ -121,7 +121,7 @@ SELECT pg_catalog.setval('public.groups_group_id_seq', 3, true);
 SELECT pg_catalog.setval('public.users_user_id_seq', 4, true);
 
 
--- Completed on 2019-04-28 14:06:01 CDT
+-- Completed on 2019-04-28 14:44:58 CDT
 
 --
 -- PostgreSQL database dump complete
