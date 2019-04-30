@@ -23,10 +23,6 @@ app.use(
     dnsPrefetchControl: true,
     frameguard: true,
     hidePoweredBy: true,
-    hpkp: {
-      maxAge: 7776000,
-      sha256s: ['AbCdEf123=', 'ZyXwVu456=']
-    },
     hsts: {
       maxAge: 31536000,
       includeSubDomains: true,
