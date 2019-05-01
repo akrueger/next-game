@@ -37,6 +37,7 @@
     "@angular/platform-browser-dynamic": "^7.2.12",
     "@angular/router": "^7.2.12",
     "auth0-js": "^9.5.1",
+    "boardgamegeek": "^0.5.5",
     "compression": "^1.7.2",
     "core-js": "^3.0.1",
     "express": "^4.16.4",
@@ -49,7 +50,7 @@
     "pg-connection-string": "^2.0.0",
     "rxjs": "^6.0.0",
     "wicg-inert": "^2.1.0",
-    "zone.js": "^0.9.0"
+    "zone.js": "~0.8.26"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^0.13.8",
