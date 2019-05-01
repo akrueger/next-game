@@ -5,7 +5,7 @@
 -- Dumped from database version 11.2
 -- Dumped by pg_dump version 11.2
 
--- Started on 2019-04-28 14:44:58 CDT
+-- Started on 2019-05-01 10:36:29 CDT
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -40,6 +40,7 @@ COPY public.groups (group_id, group_name) FROM stdin;
 1	Dads
 2	MakerSquare
 3	France
+5	Boppies
 \.
 
 
@@ -65,8 +66,6 @@ COPY public.groups_games (group_id, game_id) FROM stdin;
 --
 
 COPY public.users (user_id, username, email, first_name, last_name) FROM stdin;
-1	namikuta@master-mail.net	namikuta@master-mail.net	Peter	Butterscotch
-2	figuj@quickmail.rocks	figuj@quickmail.rocks	Joeseph	Waggler
 \.
 
 
@@ -77,10 +76,6 @@ COPY public.users (user_id, username, email, first_name, last_name) FROM stdin;
 --
 
 COPY public.groups_users (group_id, user_id) FROM stdin;
-1	1
-2	1
-3	1
-1	2
 \.
 
 
@@ -109,19 +104,10 @@ SELECT pg_catalog.setval('public.games_game_id_seq', 20, true);
 -- Name: groups_group_id_seq; Type: SEQUENCE SET; Schema: public; Owner: akrueger
 --
 
-SELECT pg_catalog.setval('public.groups_group_id_seq', 3, true);
+SELECT pg_catalog.setval('public.groups_group_id_seq', 5, true);
 
 
---
--- TOC entry 3226 (class 0 OID 0)
--- Dependencies: 204
--- Name: users_user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: akrueger
---
-
-SELECT pg_catalog.setval('public.users_user_id_seq', 4, true);
-
-
--- Completed on 2019-04-28 14:44:58 CDT
+-- Completed on 2019-05-01 10:36:30 CDT
 
 --
 -- PostgreSQL database dump complete

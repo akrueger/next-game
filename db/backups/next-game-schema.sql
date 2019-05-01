@@ -5,7 +5,7 @@
 -- Dumped from database version 11.2
 -- Dumped by pg_dump version 11.2
 
--- Started on 2019-04-28 14:44:48 CDT
+-- Started on 2019-05-01 10:37:23 CDT
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -126,7 +126,7 @@ ALTER SEQUENCE public.groups_group_id_seq OWNED BY public.groups.group_id;
 
 CREATE TABLE public.groups_users (
     group_id smallint NOT NULL,
-    user_id smallint NOT NULL
+    user_id character varying(100) NOT NULL
 );
 
 
@@ -136,7 +136,7 @@ CREATE TABLE public.groups_users (
 --
 
 CREATE TABLE public.users (
-    user_id smallint NOT NULL,
+    user_id character varying(100) NOT NULL,
     username character varying(150) NOT NULL,
     email character varying(150) NOT NULL,
     first_name character varying(250),
@@ -151,31 +151,8 @@ CREATE TABLE public.users (
 
 CREATE TABLE public.users_games (
     game_id smallint NOT NULL,
-    user_id smallint NOT NULL
+    user_id character varying(100) NOT NULL
 );
-
-
---
--- TOC entry 204 (class 1259 OID 17088)
--- Name: users_user_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.users_user_id_seq
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- TOC entry 3218 (class 0 OID 0)
--- Dependencies: 204
--- Name: users_user_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE public.users_user_id_seq OWNED BY public.users.user_id;
 
 
 --
@@ -192,14 +169,6 @@ ALTER TABLE ONLY public.games ALTER COLUMN game_id SET DEFAULT nextval('public.g
 --
 
 ALTER TABLE ONLY public.groups ALTER COLUMN group_id SET DEFAULT nextval('public.groups_group_id_seq'::regclass);
-
-
---
--- TOC entry 3064 (class 2604 OID 17092)
--- Name: users user_id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.users ALTER COLUMN user_id SET DEFAULT nextval('public.users_user_id_seq'::regclass);
 
 
 --
@@ -358,7 +327,7 @@ ALTER TABLE ONLY public.users_games
     ADD CONSTRAINT users_games_user_id_fkey FOREIGN KEY (user_id) REFERENCES public.users(user_id) ON UPDATE CASCADE ON DELETE CASCADE;
 
 
--- Completed on 2019-04-28 14:44:49 CDT
+-- Completed on 2019-05-01 10:37:24 CDT
 
 --
 -- PostgreSQL database dump complete
