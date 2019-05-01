@@ -8,7 +8,7 @@ const massive = require('massive')
 const parseDbConnectionString = require('pg-connection-string').parse
 const jwtCheck = require('./api/auth0/auth0.config')
 const api = require('./api/root')
-const test = require('./test')
+const test = require('./test/root')
 
 const app = express()
 
