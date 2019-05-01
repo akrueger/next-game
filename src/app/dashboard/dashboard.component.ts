@@ -20,9 +20,9 @@ export class DashboardComponent {
     this.restService.getGames().subscribe(games => (this.games$ = of(games)))
   }
 
-  getGroupsByUserId(userId: number) {
+  getGroups() {
     this.restService
-      .getGroupsByUserId(userId)
+      .getGroups()
       .subscribe(groups => (this.groups$ = of(groups)))
   }
 

@@ -41,16 +41,6 @@ export class RestService {
     return this.http.get('api/groups')
   }
 
-  getGroupsByUserId(userId: number) {
-    const params = new HttpParams({
-      fromObject: {
-        userId: userId.toString()
-      }
-    })
-
-    return this.http.get('api/groups', { params })
-  }
-
   createGroup(groupName: string) {
     return this.http.post('api/groups', {
       groupName

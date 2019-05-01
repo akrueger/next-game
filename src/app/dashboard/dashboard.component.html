@@ -13,7 +13,7 @@
   <h1>Your groups</h1>
   <!-- <div *ngFor=""></div> -->
 
-  <button mat-raised-button color="primary" (click)="getGroupsByUserId(2)">
+  <button mat-raised-button color="primary" (click)="getGroups()">
     REQUEST GROUPS BY USER ID
   </button>
   <div>{{ groups$ | async | json }}</div>
