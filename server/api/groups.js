@@ -6,20 +6,15 @@ const router = express.Router()
 ********/
 
 router
+  // Read groups by user ID
   .get('/', async (request, response) => {
-    const { userId } = request.query
-    let resultSet
+    const userId = request.user.sub
 
-    if (userId) {
-      // Read groups by user ID
-      const sql =
-        // TODO: read join
-        'SELECT Orders.OrderID, Customers.CustomerName, Orders.OrderDate FROM Orders INNER JOIN Customers ON Orders.CustomerID=Customers.CustomerID;'
-      await request.app.get('db').query(sql)
-    } else {
-      // Real all groups
-      resultSet = await request.app.get('db').query('SELECT * FROM groups')
-    }
+    const sql =
+      'SELECT groups.group_name FROM groups INNER JOIN groups_users ON groups.group_id = groups_users.group_id WHERE groups_users.user_id = ${userId};'
+
+    const resultSet = await request.app.get('db').query(sql, { userId })
+
     return response.json(resultSet)
   })
   // Read group by group ID
