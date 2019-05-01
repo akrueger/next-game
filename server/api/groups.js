@@ -43,13 +43,15 @@ router
       // return response.json(game)
     } else {
       // No group found, create group
+      const userId = request.user.sub
+
       const resultSet = await request.app.get('db').groups.insert(
         {
           group_name: request.body.groupName,
           groups_users: [
             {
               group_id: undefined,
-              user_id: request.body.userId
+              user_id: userId
             }
           ]
         },

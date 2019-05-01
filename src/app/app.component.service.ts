@@ -51,10 +51,9 @@ export class RestService {
     return this.http.get('api/groups', { params })
   }
 
-  createGroup(groupName: string, userId: number) {
+  createGroup(groupName: string) {
     return this.http.post('api/groups', {
-      groupName,
-      userId
+      groupName
     })
   }
 }

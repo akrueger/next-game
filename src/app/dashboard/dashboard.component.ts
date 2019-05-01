@@ -26,9 +26,9 @@ export class DashboardComponent {
       .subscribe(groups => (this.groups$ = of(groups)))
   }
 
-  createGroup(groupName: string, userId: number) {
+  createGroup(groupName: string) {
     this.restService
-      .createGroup(groupName, userId)
+      .createGroup(groupName)
       .subscribe(groups => (this.groups$ = of(groups)))
   }
 
