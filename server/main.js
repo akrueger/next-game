@@ -53,8 +53,6 @@ app.use(express.static(path.join(__dirname, '../dist/next-game')))
 // REST API endpoints with auth0 protection
 app.use('/api', jwtCheck, api)
 
-app.use('/test', test)
-
 // Fall-through: send all other requests to the Angular app
 app.get('*', (request, response) => {
   response.sendFile(path.join(__dirname, '../dist/next-game/index.html'))
