@@ -1,7 +1,25 @@
 <section>
   <h1>dashboard</h1>
 
-  <button mat-raised-button color="primary" (click)="getGames()">REQUEST GAMES</button>
-  <div>{{games$ | async | json}}</div>
+  <input type="text" #groupInput />
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="createGroup(groupInput.value, 2)"
+  >
+    CREATE GROUPS
+  </button>
 
+  <h1>Your groups</h1>
+  <!-- <div *ngFor=""></div> -->
+
+  <button mat-raised-button color="primary" (click)="getGroupsByUserId(2)">
+    REQUEST GROUPS BY USER ID
+  </button>
+  <div>{{ groups$ | async | json }}</div>
+
+  <button mat-raised-button color="primary" (click)="getGames()">
+    REQUEST ALL GAMES
+  </button>
+  <div>{{ games$ | async | json }}</div>
 </section>
