@@ -8,6 +8,7 @@ const massive = require('massive')
 const parseDbConnectionString = require('pg-connection-string').parse
 const jwtCheck = require('./api/auth0/auth0.config')
 const api = require('./api/root')
+const test = require('./test')
 
 const app = express()
 
@@ -51,6 +52,8 @@ app.use(express.static(path.join(__dirname, '../dist/next-game')))
 
 // REST API endpoints with auth0 protection
 app.use('/api', jwtCheck, api)
+
+app.use('/test', test)
 
 // Fall-through: send all other requests to the Angular app
 app.get('*', (request, response) => {
