@@ -25,7 +25,7 @@ export class StateInitializerResolver implements Resolve<any> {
 
   resolve() {
     const { groups, games } = this.getStorage()
-    if (groups.ids.length > 0) {
+    if (groups && groups.ids.length > 0) {
       return { groups, games }
     } else {
       return this.stateInitializerService.getState().pipe(
