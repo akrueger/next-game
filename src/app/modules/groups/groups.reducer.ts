@@ -19,25 +19,6 @@ export const reducer = createReducer<State>(
   on(groupsActions.createFailure, (state): State => state)
 )
 
-// export function reducer(
-//   state: State = initialState,
-//   action: groupsActions.Actions
-// ) {
-//   switch (action.type) {
-//     case groupsActions.CREATE:
-//       return state
-
-//     case groupsActions.UPDATE:
-//       return state
-
-//     case groupsActions.DELETE:
-//       return state
-
-//     default:
-//       return state
-//   }
-// }
-
 // Selectors
 export const getGroupsState = createFeatureSelector<State>('groups')
 
