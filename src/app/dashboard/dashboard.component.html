@@ -1,25 +1,28 @@
-<section>
-  <h1>dashboard</h1>
+<section class="bubble-main">
+  <form [formGroup]="gameForm">
+    <input formControlName="gameName" type="text" />
+    <div class="bubble">
+      <p-button label="Add Game" (click)="createGame()"></p-button>
+    </div>
+  </form>
+
+  <h3>YOUR GAMES</h3>
+  <div *ngFor="let game of games$ | async">
+    {{ game.name }}
+  </div>
 
   <input type="text" #groupInput />
-  <button
-    mat-raised-button
-    color="primary"
-    (click)="createGroup(groupInput.value)"
-  >
-    CREATE GROUPS
-  </button>
+  <div class="bubble">
+    <p-button
+      label="Add Group"
+      (click)="createGroup(groupInput.value)"
+    ></p-button>
+  </div>
 
-  <h1>Your groups</h1>
-  <!-- <div *ngFor=""></div> -->
-
-  <button mat-raised-button color="primary" (click)="getGroups()">
-    REQUEST GROUPS BY USER ID
-  </button>
-  <div>{{ groups$ | async | json }}</div>
-
-  <button mat-raised-button color="primary" (click)="getGames()">
-    REQUEST ALL GAMES
-  </button>
-  <div>{{ games$ | async | json }}</div>
+  <h3>YOUR GROUPS</h3>
+  <div *ngFor="let group of groups$ | async">
+    <div (click)="openGroup(group.name)" style="cursor: pointer;">
+      {{ group.name }}
+    </div>
+  </div>
 </section>

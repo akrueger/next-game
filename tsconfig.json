@@ -8,7 +8,7 @@
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "target": "es5",
+    "target": "es2015",
     "paths": {
       "core-js/es7/reflect": ["node_modules/core-js/proposals/reflect-metadata"]
     },

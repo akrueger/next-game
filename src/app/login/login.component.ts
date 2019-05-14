@@ -5,19 +5,20 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { Auth0Service } from '../auth0/auth0.service'
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class LoginComponent implements OnInit {
   loginForm: FormGroup
 
   constructor(
     private formBuilder: FormBuilder,
-    private auth0Service: Auth0Service
+    private authService: Auth0Service
   ) {}
 
   ngOnInit() {
+    // this.dataService.headerTitle$.next('')
     this.buildForm()
   }
 
@@ -29,6 +30,6 @@ export class HomeComponent implements OnInit {
   }
 
   login() {
-    this.auth0Service.login()
+    this.authService.login()
   }
 }

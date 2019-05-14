@@ -1,10 +1,22 @@
-<nav class="grid-container">
-
-  <div>Home</div>
-
-  <div></div>
-
-  <div (click)="login()">Login</div>
-  <div (click)="logout()">Logout</div>
-
-</nav>
+<p-toolbar>
+  <div class="toolbar-grid">
+    <div style="text-align: left;">
+      <i
+        class="pi pi-home"
+        style="font-size: 36px; color: white; cursor: pointer;"
+        routerLink="/login"
+      ></i>
+    </div>
+    <div style="font-size: 30px; color: white; text-align: center;">
+      {{ headerTitle }}
+    </div>
+    <div style="text-align: right;">
+      <p-menu #menu [popup]="true" [model]="items"></p-menu>
+      <i
+        class="pi pi-bars"
+        style="font-size: 36px; color: white; cursor: pointer;"
+        (click)="menu.toggle($event)"
+      ></i>
+    </div>
+  </div>
+</p-toolbar>

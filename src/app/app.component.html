@@ -1,13 +1,11 @@
 <main [attr.inert]="(isLoading$ | async) ? true : null">
-
   <app-spinner *ngIf="isLoading$ | async"></app-spinner>
 
-  <div [ngClass]="{ 'gray-blur': isLoading$ | async}">
-
+  <div [ngClass]="{ 'gray-blur': isLoading$ | async }">
     <app-header></app-header>
 
+    <p-toast></p-toast>
+
     <router-outlet></router-outlet>
-
   </div>
-
 </main>

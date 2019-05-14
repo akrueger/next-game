@@ -16,6 +16,16 @@ const environment = app.get('env')
 const port = process.env.PORT || '3001'
 app.set('port', port)
 
+// Logger
+const pino = require('pino')
+const pinoExpress = require('express-pino-logger')
+const logger = pino({
+  prettyPrint: environment !== 'production'
+})
+const expressLogger = pinoExpress({ logger })
+
+app.use(expressLogger)
+
 // Security
 app.use(
   helmet({

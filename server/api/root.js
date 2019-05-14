@@ -3,6 +3,9 @@ const express = require('express')
 const app = express()
 
 // Endpoints
+const state = require('./state')
+app.use('/state', state)
+
 const groups = require('./groups')
 app.use('/groups', groups)
 

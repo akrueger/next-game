@@ -1,68 +1,60 @@
 // Angular
-import { Component } from '@angular/core'
-import { RestService } from '../app.component.service'
-import { Observable, of } from 'rxjs'
+import { Component, OnInit } from '@angular/core'
+import { Router } from '@angular/router'
+import { FormGroup, FormControl } from '@angular/forms'
+// RxJS
+import { Observable } from 'rxjs'
+// ngRx
+import { Store } from '@ngrx/store'
+// Actions
+import * as groupActions from '../modules/groups/groups.actions'
+import * as gamesActions from '../modules/games/games.actions'
+// Reducers
+import * as fromGroups from '../modules/groups/groups.reducer'
+import * as fromGames from '../modules/games/games.reducer'
+// Models
+import { State as GroupState } from '../modules/groups/group.model'
+import { State as GameState } from '../modules/games/game.model'
+// Services
+import { GroupsService } from '../modules/groups/groups.service'
+import { GamesService } from '../modules/games/games.service'
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent {
+export class DashboardComponent implements OnInit {
   groups$: Observable<any>
   games$: Observable<any>
-  game$: Observable<any>
-  users$: Observable<any>
+  gameForm: FormGroup
 
-  constructor(private restService: RestService) {}
-
-  getGames() {
-    this.restService.getGames().subscribe(games => (this.games$ = of(games)))
+  constructor(
+    private groupsStore: Store<GroupState>,
+    private gamesStore: Store<GameState>,
+    private groupsService: GroupsService,
+    private gamesService: GamesService,
+    private router: Router
+  ) {
+    this.groups$ = this.groupsStore.select(fromGroups.selectAll)
+    this.games$ = this.gamesStore.select(fromGames.selectAll)
   }
 
-  getGroups() {
-    this.restService
-      .getGroups()
-      .subscribe(groups => (this.groups$ = of(groups)))
+  ngOnInit() {
+    this.gameForm = new FormGroup({
+      gameName: new FormControl()
+    })
   }
 
-  createGroup(groupName: string) {
-    this.restService
-      .createGroup(groupName)
-      .subscribe(groups => (this.groups$ = of(groups)))
+  createGroup(groupName: string) {}
+
+  createGame() {
+    const gameName = this.gameForm.get('gameName').value
+    this.gamesStore.dispatch(gamesActions.create({ gameName }))
+    this.gameForm.reset()
   }
 
-  getGameById(gameId: number) {
-    this.restService
-      .getGameById(gameId)
-      .subscribe(game => (this.game$ = of(game)))
-  }
-
-  getGameByName(gameName: string) {
-    this.restService
-      .getGameByName(gameName)
-      .subscribe(game => (this.game$ = of(game)))
-  }
-
-  createGame(gameName: string) {
-    this.restService
-      .createGame(gameName)
-      .subscribe(game => (this.game$ = of(game)))
-  }
-
-  deleteGameById(gameId: number) {
-    this.restService
-      .deleteGameById(gameId)
-      .subscribe(game => (this.game$ = of(game)))
-  }
-
-  deleteGameByName(gameName: string) {
-    this.restService
-      .deleteGameByName(gameName)
-      .subscribe(game => (this.game$ = of(game)))
-  }
-
-  getUsers() {
-    this.restService.getUsers().subscribe(users => (this.users$ = of(users)))
+  openGroup(groupId: number) {
+    this.router.navigate([`/group/${groupId}`])
   }
 }

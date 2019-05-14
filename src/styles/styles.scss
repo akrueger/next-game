@@ -1,17 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~normalize.css';
-@import './material-theme.scss';
+@import '~primeng/resources/primeng.min.css';
+@import '~primeicons/primeicons.css';
+@import '~primeng/resources/themes/nova-dark/theme.css';
+@import '~@fullcalendar/core/main.css';
+@import '~@fullcalendar/daygrid/main.css';
 @import url('https://fonts.googleapis.com/css?family=Lato|Roboto+Mono|Material+Icons');
 
 body {
-  background-color: #f8f8ff;
-  color: #333333;
   font-family: 'Lato';
-}
-
-button {
-  letter-spacing: 3px;
-  border-radius: 0px !important;
 }
 
 .gray-blur {

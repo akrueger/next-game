@@ -13,7 +13,7 @@ import { Auth0Service } from './auth0.service'
 
 @Injectable()
 export class Auth0BearerTokenInterceptor implements HttpInterceptor {
-  constructor(public auth0: Auth0Service) {}
+  constructor(private authService: Auth0Service) {}
 
   intercept(
     request: HttpRequest<any>,
@@ -21,7 +21,7 @@ export class Auth0BearerTokenInterceptor implements HttpInterceptor {
   ): Observable<HttpEvent<any>> {
     const authenticatedRequest = request.clone({
       setHeaders: {
-        Authorization: `Bearer ${this.auth0.accessToken}`
+        Authorization: `Bearer ${sessionStorage.getItem('accessToken')}`
       }
     })
     return next.handle(authenticatedRequest)

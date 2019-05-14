@@ -1,5 +1,7 @@
 // Angular
 import { Component, OnInit } from '@angular/core'
+// PrimeNG
+import { MenuItem } from 'primeng/api'
 // Services
 import { Auth0Service } from '../auth0/auth0.service'
 
@@ -9,15 +11,24 @@ import { Auth0Service } from '../auth0/auth0.service'
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  constructor(private auth0Service: Auth0Service) {}
+  headerTitle: string
+  items: MenuItem[]
 
-  ngOnInit() {}
+  constructor(private authService: Auth0Service) {}
+
+  ngOnInit() {
+    this.items = [
+      {
+        items: [{ label: 'Logout', icon: 'pi pi-eject' }]
+      }
+    ]
+  }
 
   login() {
-    this.auth0Service.login()
+    this.authService.login()
   }
 
   logout() {
-    this.auth0Service.logout()
+    this.authService.logout()
   }
 }
