@@ -10,7 +10,6 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "precommit": "lint-staged",
-    "packages-health-check": "yarn snyk test",
     "heroku-postbuild": "ng build --prod",
     "db:backup:schema": "pg_dump --file 'db/backups/next-game-schema.sql' --host 'localhost' --port '5432' --username 'akrueger' --no-password --verbose --format=p --schema-only --no-owner --create --clean --no-privileges --no-tablespaces --no-unlogged-table-data 'next-game'",
     "db:backup:data": "pg_dump --file 'db/backups/next-game-data.sql' --host 'localhost' --port '5432' --username 'akrueger' --no-password --verbose --format=p --data-only --no-privileges --no-tablespaces --no-unlogged-table-data 'next-game'",
@@ -80,7 +79,6 @@
     "ngrx-store-logger": "^0.2.3",
     "pino-pretty": "^3.0.0",
     "prettier": "^1.12.1",
-    "snyk": "^1.80.0",
     "ts-node": "~8.0.3",
     "tslint": "~5.15.0",
     "typescript": "~3.4.0"
