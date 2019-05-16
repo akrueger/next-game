@@ -1,5 +1,5 @@
 // Angular
-import { Component, OnInit } from '@angular/core'
+import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core'
 import { Router } from '@angular/router'
 import { FormGroup, FormControl } from '@angular/forms'
 // RxJS
@@ -22,7 +22,8 @@ import { GamesService } from '../modules/games/games.service'
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+  styleUrls: ['./dashboard.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DashboardComponent implements OnInit {
   groups$: Observable<any>

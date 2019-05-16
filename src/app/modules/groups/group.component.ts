@@ -1,5 +1,5 @@
 // Angular
-import { Component, OnInit } from '@angular/core'
+import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core'
 import { Router } from '@angular/router'
 // RxJS
 import { Observable } from 'rxjs'
@@ -13,7 +13,8 @@ import { State } from './group.model'
 @Component({
   selector: 'app-group',
   templateUrl: './group.component.html',
-  styleUrls: ['./group.component.scss']
+  styleUrls: ['./group.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class GroupComponent implements OnInit {
   groups: Observable<any>

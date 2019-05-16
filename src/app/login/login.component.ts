@@ -1,5 +1,5 @@
 // Angular
-import { Component, OnInit } from '@angular/core'
+import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 // Services
 import { Auth0Service } from '../auth0/auth0.service'
@@ -7,7 +7,8 @@ import { Auth0Service } from '../auth0/auth0.service'
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup
