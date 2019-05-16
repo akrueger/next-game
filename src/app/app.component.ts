@@ -1,5 +1,10 @@
 // Angular
-import { Component, ChangeDetectionStrategy , OnInit, OnDestroy } from '@angular/core'
+import {
+  Component,
+  ChangeDetectionStrategy,
+  OnInit,
+  OnDestroy
+} from '@angular/core'
 // RxJS
 import { Observable, Subject, of } from 'rxjs'
 // Services
