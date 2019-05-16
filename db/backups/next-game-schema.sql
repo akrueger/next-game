@@ -5,7 +5,7 @@
 -- Dumped from database version 11.3
 -- Dumped by pg_dump version 11.3
 
--- Started on 2019-05-13 21:01:19 CDT
+-- Started on 2019-05-15 20:24:28 CDT
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -20,7 +20,7 @@ SET row_security = off;
 
 DROP DATABASE "next-game";
 --
--- TOC entry 3215 (class 1262 OID 17338)
+-- TOC entry 3215 (class 1262 OID 17616)
 -- Name: next-game; Type: DATABASE; Schema: -; Owner: -
 --
 
@@ -41,7 +41,7 @@ SET client_min_messages = warning;
 SET row_security = off;
 
 --
--- TOC entry 205 (class 1255 OID 17533)
+-- TOC entry 205 (class 1255 OID 17617)
 -- Name: initialize_groups(); Type: PROCEDURE; Schema: public; Owner: -
 --
 
@@ -62,7 +62,7 @@ COMMENT ON PROCEDURE public.initialize_groups() IS 'Return groups data by user';
 SET default_with_oids = false;
 
 --
--- TOC entry 196 (class 1259 OID 17339)
+-- TOC entry 196 (class 1259 OID 17618)
 -- Name: games; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -73,7 +73,7 @@ CREATE TABLE public.games (
 
 
 --
--- TOC entry 197 (class 1259 OID 17342)
+-- TOC entry 197 (class 1259 OID 17621)
 -- Name: games_game_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -96,7 +96,7 @@ ALTER SEQUENCE public.games_game_id_seq OWNED BY public.games.game_id;
 
 
 --
--- TOC entry 198 (class 1259 OID 17344)
+-- TOC entry 198 (class 1259 OID 17623)
 -- Name: groups; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -107,7 +107,7 @@ CREATE TABLE public.groups (
 
 
 --
--- TOC entry 199 (class 1259 OID 17347)
+-- TOC entry 199 (class 1259 OID 17626)
 -- Name: groups_games; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -118,7 +118,7 @@ CREATE TABLE public.groups_games (
 
 
 --
--- TOC entry 200 (class 1259 OID 17350)
+-- TOC entry 200 (class 1259 OID 17629)
 -- Name: groups_group_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -141,7 +141,7 @@ ALTER SEQUENCE public.groups_group_id_seq OWNED BY public.groups.group_id;
 
 
 --
--- TOC entry 201 (class 1259 OID 17352)
+-- TOC entry 201 (class 1259 OID 17631)
 -- Name: groups_users; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -153,7 +153,7 @@ CREATE TABLE public.groups_users (
 
 
 --
--- TOC entry 204 (class 1259 OID 17416)
+-- TOC entry 202 (class 1259 OID 17634)
 -- Name: roles; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -164,7 +164,7 @@ CREATE TABLE public.roles (
 
 
 --
--- TOC entry 203 (class 1259 OID 17414)
+-- TOC entry 203 (class 1259 OID 17637)
 -- Name: roles_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -187,7 +187,7 @@ ALTER SEQUENCE public.roles_id_seq OWNED BY public.roles.role_id;
 
 
 --
--- TOC entry 202 (class 1259 OID 17361)
+-- TOC entry 204 (class 1259 OID 17639)
 -- Name: users_games; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -198,7 +198,7 @@ CREATE TABLE public.users_games (
 
 
 --
--- TOC entry 3062 (class 2604 OID 17428)
+-- TOC entry 3062 (class 2604 OID 17642)
 -- Name: games game_id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -206,7 +206,7 @@ ALTER TABLE ONLY public.games ALTER COLUMN game_id SET DEFAULT nextval('public.g
 
 
 --
--- TOC entry 3063 (class 2604 OID 17445)
+-- TOC entry 3063 (class 2604 OID 17643)
 -- Name: groups group_id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -214,7 +214,7 @@ ALTER TABLE ONLY public.groups ALTER COLUMN group_id SET DEFAULT nextval('public
 
 
 --
--- TOC entry 3064 (class 2604 OID 17419)
+-- TOC entry 3064 (class 2604 OID 17644)
 -- Name: roles role_id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -222,7 +222,7 @@ ALTER TABLE ONLY public.roles ALTER COLUMN role_id SET DEFAULT nextval('public.r
 
 
 --
--- TOC entry 3066 (class 2606 OID 17430)
+-- TOC entry 3066 (class 2606 OID 17646)
 -- Name: games games_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -231,7 +231,7 @@ ALTER TABLE ONLY public.games
 
 
 --
--- TOC entry 3072 (class 2606 OID 17477)
+-- TOC entry 3072 (class 2606 OID 17648)
 -- Name: groups_games groups_games_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -240,7 +240,7 @@ ALTER TABLE ONLY public.groups_games
 
 
 --
--- TOC entry 3068 (class 2606 OID 17447)
+-- TOC entry 3068 (class 2606 OID 17650)
 -- Name: groups groups_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -249,7 +249,7 @@ ALTER TABLE ONLY public.groups
 
 
 --
--- TOC entry 3077 (class 2606 OID 17491)
+-- TOC entry 3077 (class 2606 OID 17652)
 -- Name: groups_users groups_users_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -258,7 +258,7 @@ ALTER TABLE ONLY public.groups_users
 
 
 --
--- TOC entry 3083 (class 2606 OID 17421)
+-- TOC entry 3079 (class 2606 OID 17654)
 -- Name: roles roles_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -267,7 +267,7 @@ ALTER TABLE ONLY public.roles
 
 
 --
--- TOC entry 3081 (class 2606 OID 17519)
+-- TOC entry 3083 (class 2606 OID 17656)
 -- Name: users_games users_games_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -276,7 +276,7 @@ ALTER TABLE ONLY public.users_games
 
 
 --
--- TOC entry 3069 (class 1259 OID 17478)
+-- TOC entry 3069 (class 1259 OID 17657)
 -- Name: fki_groups_games_game_id_fkey; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -284,7 +284,7 @@ CREATE INDEX fki_groups_games_game_id_fkey ON public.groups_games USING btree (g
 
 
 --
--- TOC entry 3070 (class 1259 OID 17464)
+-- TOC entry 3070 (class 1259 OID 17658)
 -- Name: fki_groups_games_group_id_fkey; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -292,7 +292,7 @@ CREATE INDEX fki_groups_games_group_id_fkey ON public.groups_games USING btree (
 
 
 --
--- TOC entry 3073 (class 1259 OID 17492)
+-- TOC entry 3073 (class 1259 OID 17659)
 -- Name: fki_groups_users_group_id_fkey; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -300,7 +300,7 @@ CREATE INDEX fki_groups_users_group_id_fkey ON public.groups_users USING btree (
 
 
 --
--- TOC entry 3074 (class 1259 OID 17505)
+-- TOC entry 3074 (class 1259 OID 17660)
 -- Name: fki_groups_users_role_id_fkey; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -308,7 +308,7 @@ CREATE INDEX fki_groups_users_role_id_fkey ON public.groups_users USING btree (r
 
 
 --
--- TOC entry 3075 (class 1259 OID 17381)
+-- TOC entry 3075 (class 1259 OID 17661)
 -- Name: fki_groups_users_user_id_fkey; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -316,7 +316,7 @@ CREATE INDEX fki_groups_users_user_id_fkey ON public.groups_users USING btree (u
 
 
 --
--- TOC entry 3078 (class 1259 OID 17520)
+-- TOC entry 3080 (class 1259 OID 17662)
 -- Name: fki_users_games_game_id_fkey; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -324,7 +324,7 @@ CREATE INDEX fki_users_games_game_id_fkey ON public.users_games USING btree (gam
 
 
 --
--- TOC entry 3079 (class 1259 OID 17383)
+-- TOC entry 3081 (class 1259 OID 17663)
 -- Name: fki_users_games_user_id_fkey; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -332,7 +332,7 @@ CREATE INDEX fki_users_games_user_id_fkey ON public.users_games USING btree (use
 
 
 --
--- TOC entry 3085 (class 2606 OID 17479)
+-- TOC entry 3084 (class 2606 OID 17664)
 -- Name: groups_games groups_games_game_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -341,7 +341,7 @@ ALTER TABLE ONLY public.groups_games
 
 
 --
--- TOC entry 3084 (class 2606 OID 17465)
+-- TOC entry 3085 (class 2606 OID 17669)
 -- Name: groups_games groups_games_group_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -350,7 +350,7 @@ ALTER TABLE ONLY public.groups_games
 
 
 --
--- TOC entry 3086 (class 2606 OID 17493)
+-- TOC entry 3086 (class 2606 OID 17674)
 -- Name: groups_users groups_users_group_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -359,7 +359,7 @@ ALTER TABLE ONLY public.groups_users
 
 
 --
--- TOC entry 3087 (class 2606 OID 17506)
+-- TOC entry 3087 (class 2606 OID 17679)
 -- Name: groups_users groups_users_role_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -368,7 +368,7 @@ ALTER TABLE ONLY public.groups_users
 
 
 --
--- TOC entry 3088 (class 2606 OID 17521)
+-- TOC entry 3088 (class 2606 OID 17684)
 -- Name: users_games users_games_game_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -376,7 +376,7 @@ ALTER TABLE ONLY public.users_games
     ADD CONSTRAINT users_games_game_id_fkey FOREIGN KEY (game_id) REFERENCES public.games(game_id) ON UPDATE CASCADE ON DELETE CASCADE;
 
 
--- Completed on 2019-05-13 21:01:19 CDT
+-- Completed on 2019-05-15 20:24:28 CDT
 
 --
 -- PostgreSQL database dump complete

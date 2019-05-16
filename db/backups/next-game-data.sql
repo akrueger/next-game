@@ -5,7 +5,7 @@
 -- Dumped from database version 11.3
 -- Dumped by pg_dump version 11.3
 
--- Started on 2019-05-13 21:01:34 CDT
+-- Started on 2019-05-15 20:24:32 CDT
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -19,7 +19,7 @@ SET client_min_messages = warning;
 SET row_security = off;
 
 --
--- TOC entry 3210 (class 0 OID 17339)
+-- TOC entry 3210 (class 0 OID 17618)
 -- Dependencies: 196
 -- Data for Name: games; Type: TABLE DATA; Schema: public; Owner: akrueger
 --
@@ -32,7 +32,7 @@ COPY public.games (game_id, game_name) FROM stdin;
 
 
 --
--- TOC entry 3212 (class 0 OID 17344)
+-- TOC entry 3212 (class 0 OID 17623)
 -- Dependencies: 198
 -- Data for Name: groups; Type: TABLE DATA; Schema: public; Owner: akrueger
 --
@@ -46,7 +46,7 @@ COPY public.groups (group_id, group_name) FROM stdin;
 
 
 --
--- TOC entry 3213 (class 0 OID 17347)
+-- TOC entry 3213 (class 0 OID 17626)
 -- Dependencies: 199
 -- Data for Name: groups_games; Type: TABLE DATA; Schema: public; Owner: akrueger
 --
@@ -61,8 +61,8 @@ COPY public.groups_games (group_id, game_id) FROM stdin;
 
 
 --
--- TOC entry 3218 (class 0 OID 17416)
--- Dependencies: 204
+-- TOC entry 3216 (class 0 OID 17634)
+-- Dependencies: 202
 -- Data for Name: roles; Type: TABLE DATA; Schema: public; Owner: akrueger
 --
 
@@ -73,7 +73,7 @@ COPY public.roles (role_id, role) FROM stdin;
 
 
 --
--- TOC entry 3215 (class 0 OID 17352)
+-- TOC entry 3215 (class 0 OID 17631)
 -- Dependencies: 201
 -- Data for Name: groups_users; Type: TABLE DATA; Schema: public; Owner: akrueger
 --
@@ -89,8 +89,8 @@ COPY public.groups_users (group_id, user_id, role_id) FROM stdin;
 
 
 --
--- TOC entry 3216 (class 0 OID 17361)
--- Dependencies: 202
+-- TOC entry 3218 (class 0 OID 17639)
+-- Dependencies: 204
 -- Data for Name: users_games; Type: TABLE DATA; Schema: public; Owner: akrueger
 --
 
@@ -127,7 +127,7 @@ SELECT pg_catalog.setval('public.groups_group_id_seq', 31, true);
 SELECT pg_catalog.setval('public.roles_id_seq', 2, true);
 
 
--- Completed on 2019-05-13 21:01:34 CDT
+-- Completed on 2019-05-15 20:24:32 CDT
 
 --
 -- PostgreSQL database dump complete
