@@ -7,6 +7,7 @@ import {
 } from '@angular/core'
 // RxJS
 import { Observable, Subject, of } from 'rxjs'
+import { takeUntil } from 'rxjs/operators'
 // Services
 import { Auth0Service } from './auth0/auth0.service'
 import { SpinnerService } from './modules/shared/spinner/spinner.service'
@@ -25,9 +26,9 @@ export class AppComponent implements OnInit, OnDestroy {
     private authService: Auth0Service,
     private spinnerService: SpinnerService
   ) {
-    this.spinnerService.isLoading$.subscribe(
-      isLoading => (this.isLoading$ = of(isLoading))
-    )
+    this.spinnerService.isLoading$
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe(isLoading => (this.isLoading$ = of(isLoading)))
     authService.handleAuthentication()
     authService.scheduleRenewal()
   }
