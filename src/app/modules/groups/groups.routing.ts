@@ -9,9 +9,8 @@ import { GroupGuard } from './group.guard'
 
 const routes: Routes = [
   {
-    path: 'group/:id',
-    component: GroupComponent,
-    canActivate: [AuthGuard, GroupGuard]
+    path: '',
+    component: GroupComponent
   }
   // {
   //   path: 'group/:id/settings',

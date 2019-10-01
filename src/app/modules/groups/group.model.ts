@@ -6,18 +6,21 @@ import { User } from '../../auth0/user.model'
 export interface Group {
   id: string
   name: string
-  members: User[]
-  admins: User[]
 }
 
 export const adapter = createEntityAdapter<Group>()
 
-export interface State extends EntityState<Group> {}
+export interface State extends EntityState<Group> {
+  members: User[]
+  admins: User[]
+}
 
 // Initial state
 const initialGroups = {
   ids: [],
-  entities: {}
+  entities: {},
+  members: [],
+  admins: []
 }
 
 export const initialState: State = adapter.getInitialState(initialGroups)

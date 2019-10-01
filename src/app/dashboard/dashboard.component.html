@@ -21,7 +21,7 @@
 
   <h3>YOUR GROUPS</h3>
   <div *ngFor="let group of groups$ | async">
-    <div (click)="openGroup(group.name)" style="cursor: pointer;">
+    <div (click)="openGroup(group.id)" style="cursor: pointer;">
       {{ group.name }}
     </div>
   </div>
