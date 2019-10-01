@@ -54,10 +54,7 @@ import { environment } from '../environments/environment'
     BrowserAnimationsModule,
     HttpClientModule,
     StoreModule.forRoot(rootReducers, {
-      metaReducers,
-      runtimeChecks: {
-        strictImmutability: true
-      }
+      metaReducers
     }),
     StoreRouterConnectingModule.forRoot(),
     EffectsModule.forRoot([]),
