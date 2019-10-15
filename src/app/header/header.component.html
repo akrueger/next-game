@@ -11,6 +11,7 @@
       {{ headerTitle }}
     </div>
     <div style="text-align: right;">
+      <div (click)="logout()">logout</div>
       <p-menu #menu [popup]="true" [model]="items"></p-menu>
       <i
         class="pi pi-bars"

@@ -29,18 +29,10 @@ export class AppComponent implements OnInit, OnDestroy {
     this.spinnerService.isLoading$
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe(isLoading => (this.isLoading$ = of(isLoading)))
-    authService.handleAuthentication()
-    authService.scheduleRenewal()
   }
 
   ngOnInit() {
-    if (this.authService.isAuth0Authenticated()) {
-      this.authService.renewTokens()
-    }
-  }
-
-  setLoading(value: boolean) {
-    this.spinnerService.setLoading(value)
+    this.authService.localAuthSetup()
   }
 
   ngOnDestroy() {

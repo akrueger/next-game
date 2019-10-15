@@ -2,6 +2,7 @@
 import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router'
 // Components
+import { Auth0CallbackComponent } from './auth0/auth0callback.component'
 import { GroupComponent } from './modules/groups/group.component'
 import { LoginComponent } from './login/login.component'
 import { DashboardComponent } from './dashboard/dashboard.component'
@@ -15,9 +16,8 @@ import { StateInitializerResolver } from './state-initializer-resolver.service'
 
 const routes: Routes = [
   {
-    path: '',
-    pathMatch: 'full',
-    redirectTo: '/login'
+    path: 'callback',
+    component: Auth0CallbackComponent
   },
   {
     path: 'login',
@@ -26,19 +26,24 @@ const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent,
-    resolve: { state: StateInitializerResolver },
+    // resolve: { state: StateInitializerResolver },
     canActivate: [AuthGuard]
   },
-  {
-    path: 'group/:id',
-    component: GroupComponent,
-    canActivate: [AuthGuard, GroupGuard],
-    loadChildren: './modules/groups/groups.module#GroupsModule'
-  },
+  // {
+  //   path: 'group/:id',
+  //   component: GroupComponent,
+  //   canActivate: [AuthGuard, GroupGuard],
+  //   loadChildren: './modules/groups/groups.module#GroupsModule'
+  // },
   {
     path: 'profile',
     component: ProfileComponent,
     canActivate: [AuthGuard]
+  },
+  {
+    path: '',
+    pathMatch: 'full',
+    redirectTo: '/login'
   },
   {
     path: '**',

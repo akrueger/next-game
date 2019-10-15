@@ -37,8 +37,8 @@ export class DashboardComponent implements OnInit {
     private gamesService: GamesService,
     private router: Router
   ) {
-    this.groups$ = this.groupsStore.select(fromGroups.selectAll)
-    this.games$ = this.gamesStore.select(fromGames.selectAll)
+    // this.groups$ = this.groupsStore.select(fromGroups.selectAll)
+    // this.games$ = this.gamesStore.select(fromGames.selectAll)
   }
 
   ngOnInit() {

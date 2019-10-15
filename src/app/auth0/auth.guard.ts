@@ -1,33 +1,33 @@
 // Angular
-import { Injectable, OnDestroy } from '@angular/core'
-import { Router, CanActivate } from '@angular/router'
-// RxJS
-import { Subject } from 'rxjs'
+import { Injectable } from '@angular/core'
+import {
+  ActivatedRouteSnapshot,
+  RouterStateSnapshot,
+  UrlTree,
+  CanActivate
+} from '@angular/router'
+// RxJs
+import { Observable } from 'rxjs'
+import { tap } from 'rxjs/operators'
 // Services
 import { Auth0Service } from './auth0.service'
 
-@Injectable()
-export class AuthGuard implements CanActivate, OnDestroy {
-  private unsubscribe$: Subject<void> = new Subject<void>()
-  private authenticated: boolean
+@Injectable({
+  providedIn: 'root'
+})
+export class AuthGuard implements CanActivate {
+  constructor(private authService: Auth0Service) {}
 
-  constructor(private authService: Auth0Service, private router: Router) {
-    this.authService.authenticated$.subscribe(
-      authenticated => (this.authenticated = authenticated)
+  canActivate(
+    next: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ): Observable<boolean> | Promise<boolean | UrlTree> | boolean {
+    return this.authService.isAuthenticated$.pipe(
+      tap(loggedIn => {
+        if (!loggedIn) {
+          this.authService.login(state.url)
+        }
+      })
     )
-  }
-
-  canActivate() {
-    if (!this.authService.isAuth0Authenticated()) {
-      this.router.navigate(['/login'])
-      return false
-    }
-
-    return true
-  }
-
-  ngOnDestroy() {
-    this.unsubscribe$.next()
-    this.unsubscribe$.complete()
   }
 }

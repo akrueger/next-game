@@ -21,20 +21,18 @@ import { RouterSerializer } from './app.store'
 import { rootReducers, metaReducers } from './app.store'
 // Components
 import { AppComponent } from './app.component'
+import { Auth0CallbackComponent } from './auth0/auth0callback.component'
 import { HeaderComponent } from './header/header.component'
 import { LoginComponent } from './login/login.component'
 import { DashboardComponent } from './dashboard/dashboard.component'
 import { ProfileComponent } from './profile/profile.component'
 import { PageNotFoundComponent } from './pageNotFound/pageNotFound.component'
 // Services
-import { Auth0Service } from './auth0/auth0.service'
 import { Auth0BearerTokenInterceptor } from './auth0/auth0.interceptor.service'
 import { HttpErrorInterceptor } from './http-error.interceptor'
 import { RestService } from './rest.service'
 import { StateInitializerService } from './state-initializer.service'
 import { ProfileService } from './profile/profile.component.service'
-// Guards
-import { AuthGuard } from './auth0/auth.guard'
 // Resolvers
 import { StateInitializerResolver } from './state-initializer-resolver.service'
 // Configuration
@@ -43,6 +41,7 @@ import { environment } from '../environments/environment'
 @NgModule({
   declarations: [
     AppComponent,
+    Auth0CallbackComponent,
     HeaderComponent,
     LoginComponent,
     DashboardComponent,
@@ -68,7 +67,6 @@ import { environment } from '../environments/environment'
     AppRoutingModule // must be last
   ],
   providers: [
-    Auth0Service,
     RestService,
     StateInitializerService,
     ProfileService,
@@ -83,7 +81,6 @@ import { environment } from '../environments/environment'
       useClass: HttpErrorInterceptor,
       multi: true
     },
-    AuthGuard,
     StateInitializerResolver
   ],
   bootstrap: [AppComponent]

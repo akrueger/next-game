@@ -8,10 +8,10 @@ import { AuthGuard } from '../../auth0/auth.guard'
 import { GroupGuard } from './group.guard'
 
 const routes: Routes = [
-  {
-    path: '',
-    component: GroupComponent
-  }
+  // {
+  //   path: '',
+  //   component: GroupComponent
+  // }
   // {
   //   path: 'group/:id/settings',
   //   component: GroupSettingsComponent,

@@ -1,6 +1,5 @@
 // Angular
-import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core'
-import { FormBuilder, FormGroup, Validators } from '@angular/forms'
+import { Component, ChangeDetectionStrategy } from '@angular/core'
 // Services
 import { Auth0Service } from '../auth0/auth0.service'
 
@@ -10,25 +9,8 @@ import { Auth0Service } from '../auth0/auth0.service'
   styleUrls: ['./login.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class LoginComponent implements OnInit {
-  loginForm: FormGroup
-
-  constructor(
-    private formBuilder: FormBuilder,
-    private authService: Auth0Service
-  ) {}
-
-  ngOnInit() {
-    // this.dataService.headerTitle$.next('')
-    this.buildForm()
-  }
-
-  private buildForm() {
-    this.loginForm = this.formBuilder.group({
-      emailAddress: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required]]
-    })
-  }
+export class LoginComponent {
+  constructor(private authService: Auth0Service) {}
 
   login() {
     this.authService.login()
