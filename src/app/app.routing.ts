@@ -14,6 +14,8 @@ import { AuthGuard } from './auth0/auth.guard'
 import { GroupGuard } from './modules/groups/group.guard'
 // Resolver
 import { StateInitializerResolver } from './state-initializer-resolver.service'
+// Services
+import { Auth0BearerTokenInterceptor } from './auth0/auth0.interceptor.service'
 import { HttpErrorInterceptor } from './http-error.interceptor'
 
 const routes: Routes = [
