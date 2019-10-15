@@ -26,6 +26,6 @@ export class Auth0BearerTokenInterceptor implements HttpInterceptor {
         Authorization: `Bearer ${sessionStorage.getItem('accessToken')}`
       }
     })
-    return next.handle(authenticatedRequest)
+      catchError(error => throwError(error))
   }
 }

@@ -32,9 +32,7 @@ export class HttpErrorInterceptor implements HttpInterceptor {
           errorMessage = `Error: ${error.error.message}`
         } else {
           // Server error
-          errorMessage = `Error Code: ${error.status}\nMessage: ${
-            error.message
-          }`
+          errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`
         }
 
         this.messageService.add({
