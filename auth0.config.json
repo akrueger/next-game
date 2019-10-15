@@ -1,0 +1,8 @@
+{
+  "clientId": "bYYDsiHz-do-L996f9CoV8weqU32lbNE",
+  "domain": "app63125392.auth0.com",
+  "audience": {
+    "development": "http://localhost:3001/api/",
+    "production": "https://next-game-pls.herokuapp.com/api/"
+  }
+}

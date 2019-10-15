@@ -14,7 +14,7 @@ import { tap, catchError, concatMap, shareReplay } from 'rxjs/operators'
 // Auth0
 import createAuth0Client from '@auth0/auth0-spa-js'
 import Auth0Client from '@auth0/auth0-spa-js/dist/typings/Auth0Client'
-import * as auth0Config from '../../../auth0_config.json'
+import * as auth0Config from '../../../auth0.config.json'
 
 @Injectable({
   providedIn: 'root'
