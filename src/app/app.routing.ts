@@ -30,7 +30,7 @@ const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent,
-    // resolve: { state: StateInitializerResolver },
+    resolve: { state: StateInitializerResolver },
     canActivate: [AuthGuard]
   },
   {
