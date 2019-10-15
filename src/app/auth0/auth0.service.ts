@@ -15,6 +15,8 @@ import { tap, catchError, concatMap, shareReplay } from 'rxjs/operators'
 import createAuth0Client from '@auth0/auth0-spa-js'
 import Auth0Client from '@auth0/auth0-spa-js/dist/typings/Auth0Client'
 import * as auth0Config from '../../../auth0.config.json'
+// Environment
+import { environment } from '../../environments/environment'
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +27,10 @@ export class Auth0Service {
     createAuth0Client({
       domain: auth0Config.domain,
       client_id: auth0Config.clientId,
-      redirect_uri: `${window.location.origin}/callback`
+      redirect_uri: `${window.location.origin}/callback`,
+      audience: environment.production
+        ? auth0Config.audience.production
+        : auth0Config.audience.development
     })
   ) as Observable<Auth0Client>).pipe(
     shareReplay(1), // Every subscription receives the same shared value
