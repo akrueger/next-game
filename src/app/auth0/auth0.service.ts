@@ -106,6 +106,17 @@ export class Auth0Service {
     })
   }
 
+  logout() {
+    // Ensure Auth0 client instance exists
+    this.auth0Client$.subscribe((client: Auth0Client) => {
+      // Call method to log out
+      client.logout({
+        client_id: 'bYYDsiHz-do-L996f9CoV8weqU32lbNE',
+        returnTo: `${window.location.origin}`
+      })
+    })
+  }
+
   handleAuthCallback() {
     // Only the callback component should call this method
     // Call when app reloads after user logs in with Auth0
@@ -127,17 +138,6 @@ export class Auth0Service {
     authComplete$.subscribe(([user, loggedIn]) => {
       // Redirect to target route after callback processing
       this.router.navigate([targetRoute])
-    })
-  }
-
-  logout() {
-    // Ensure Auth0 client instance exists
-    this.auth0Client$.subscribe((client: Auth0Client) => {
-      // Call method to log out
-      client.logout({
-        client_id: 'bYYDsiHz-do-L996f9CoV8weqU32lbNE',
-        returnTo: `${window.location.origin}`
-      })
     })
   }
 }
