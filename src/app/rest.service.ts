@@ -5,7 +5,9 @@ import { HttpClient, HttpParams } from '@angular/common/http'
 import { AppCollectionState } from './app-collection-state.model'
 import { Group } from './modules/groups/group.model'
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class RestService {
   constructor(private http: HttpClient) {}
 

@@ -5,7 +5,9 @@ import { BehaviorSubject } from 'rxjs'
 // Models
 import { User } from '../auth0/user.model'
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class ProfileService {
   userProfile$ = new BehaviorSubject<User>(null)
 

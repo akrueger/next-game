@@ -11,7 +11,9 @@ import { Observable } from 'rxjs'
 // Services
 import { Auth0Service } from './auth0.service'
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class Auth0BearerTokenInterceptor implements HttpInterceptor {
   constructor(private authService: Auth0Service) {}
 

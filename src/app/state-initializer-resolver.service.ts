@@ -15,7 +15,9 @@ import { State as GameState } from './modules/games/game.model'
 // Services
 import { StateInitializerService } from './state-initializer.service'
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class StateInitializerResolver implements Resolve<any> {
   constructor(
     private groupsStore: Store<GroupState>,

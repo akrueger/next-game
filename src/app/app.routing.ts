@@ -1,6 +1,7 @@
 // Angular
 import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router'
+import { HTTP_INTERCEPTORS } from '@angular/common/http'
 // Components
 import { Auth0CallbackComponent } from './auth0/auth0callback.component'
 import { GroupComponent } from './modules/groups/group.component'
@@ -13,6 +14,7 @@ import { AuthGuard } from './auth0/auth.guard'
 import { GroupGuard } from './modules/groups/group.guard'
 // Resolver
 import { StateInitializerResolver } from './state-initializer-resolver.service'
+import { HttpErrorInterceptor } from './http-error.interceptor'
 
 const routes: Routes = [
   {
@@ -53,6 +55,18 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: Auth0BearerTokenInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpErrorInterceptor,
+      multi: true
+    }
+  ]
 })
 export class AppRoutingModule {}

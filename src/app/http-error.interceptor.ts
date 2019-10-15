@@ -13,7 +13,9 @@ import { retry, catchError } from 'rxjs/operators'
 // Services
 import { MessageService } from 'primeng/api'
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class HttpErrorInterceptor implements HttpInterceptor {
   constructor(private messageService: MessageService) {}
 

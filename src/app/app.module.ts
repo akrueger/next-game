@@ -2,7 +2,7 @@
 import { NgModule } from '@angular/core'
 import { BrowserModule } from '@angular/platform-browser'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http'
 // Application modules
 import { AppRoutingModule } from './app.routing'
 import { SharedModule } from './modules/shared/shared.module'
@@ -27,14 +27,6 @@ import { LoginComponent } from './login/login.component'
 import { DashboardComponent } from './dashboard/dashboard.component'
 import { ProfileComponent } from './profile/profile.component'
 import { PageNotFoundComponent } from './pageNotFound/pageNotFound.component'
-// Services
-import { Auth0BearerTokenInterceptor } from './auth0/auth0.interceptor.service'
-import { HttpErrorInterceptor } from './http-error.interceptor'
-import { RestService } from './rest.service'
-import { StateInitializerService } from './state-initializer.service'
-import { ProfileService } from './profile/profile.component.service'
-// Resolvers
-import { StateInitializerResolver } from './state-initializer-resolver.service'
 // Configuration
 import { environment } from '../environments/environment'
 
@@ -66,23 +58,7 @@ import { environment } from '../environments/environment'
     GamesModule,
     AppRoutingModule // must be last
   ],
-  providers: [
-    RestService,
-    StateInitializerService,
-    ProfileService,
-    { provide: RouterStateSerializer, useClass: RouterSerializer },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: Auth0BearerTokenInterceptor,
-      multi: true
-    },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: HttpErrorInterceptor,
-      multi: true
-    },
-    StateInitializerResolver
-  ],
+  providers: [{ provide: RouterStateSerializer, useClass: RouterSerializer }],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
