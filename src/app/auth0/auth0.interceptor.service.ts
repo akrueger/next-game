@@ -1,15 +1,13 @@
-// Angular
 import { Injectable } from '@angular/core'
 import {
-  HttpEvent,
-  HttpInterceptor,
+  HttpRequest,
   HttpHandler,
-  HttpRequest
+  HttpEvent,
+  HttpInterceptor
 } from '@angular/common/http'
-// RxJS
-import { Observable } from 'rxjs'
-// Services
 import { Auth0Service } from './auth0.service'
+import { Observable, throwError } from 'rxjs'
+import { mergeMap, catchError } from 'rxjs/operators'
 
 @Injectable({
   providedIn: 'root'
@@ -18,14 +16,17 @@ export class Auth0BearerTokenInterceptor implements HttpInterceptor {
   constructor(private authService: Auth0Service) {}
 
   intercept(
-    request: HttpRequest<any>,
+    req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    const authenticatedRequest = request.clone({
-      setHeaders: {
-        Authorization: `Bearer ${sessionStorage.getItem('accessToken')}`
-      }
-    })
+    return this.authService.getTokenSilently$().pipe(
+      mergeMap(token => {
+        const tokenReq = req.clone({
+          setHeaders: { Authorization: `Bearer ${token}` }
+        })
+        return next.handle(tokenReq)
+      }),
       catchError(error => throwError(error))
+    )
   }
 }
