@@ -1,9 +1,15 @@
 const jwt = require('express-jwt')
 const jwksRsa = require('jwks-rsa')
-import auth0Config from '../../../auth0.config.json'
 const environment = process.env.NODE_ENV
+const path = require('path')
+const fs = require('fs')
 
-auth0Config.domain
+let auth0Config = JSON.parse(
+  fs.readFileSync(
+    path.resolve(__dirname, '../../../auth0.config.json'),
+    'utf-8'
+  )
+)
 
 const jwtCheck = jwt({
   secret: jwksRsa.expressJwtSecret({
