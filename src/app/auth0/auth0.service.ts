@@ -64,6 +64,14 @@ export class Auth0Service {
     )
   }
 
+  // When calling, options can be passed if desired
+  // https://auth0.github.io/auth0-spa-js/classes/auth0client.html#gettokensilently
+  getTokenSilently$(options?): Observable<string> {
+    return this.auth0Client$.pipe(
+      concatMap((client: Auth0Client) => from(client.getTokenSilently(options)))
+    )
+  }
+
   localAuthSetup() {
     // This should only be called on app initialization
     // Set up local authentication streams
