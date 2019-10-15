@@ -33,12 +33,13 @@ const routes: Routes = [
     // resolve: { state: StateInitializerResolver },
     canActivate: [AuthGuard]
   },
-  // {
-  //   path: 'group/:id',
-  //   component: GroupComponent,
-  //   canActivate: [AuthGuard, GroupGuard],
-  //   loadChildren: './modules/groups/groups.module#GroupsModule'
-  // },
+  {
+    path: 'group/:id',
+    component: GroupComponent,
+    canActivate: [AuthGuard, GroupGuard],
+    loadChildren: () =>
+      import('./modules/groups/groups.module').then(m => m.GroupsModule)
+  },
   {
     path: 'profile',
     component: ProfileComponent,
