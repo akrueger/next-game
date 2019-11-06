@@ -11,13 +11,13 @@ import {
 import { Observable, throwError } from 'rxjs'
 import { retry, catchError } from 'rxjs/operators'
 // Services
-import { MessageService } from 'primeng/api'
+// import { MessageService } from 'primeng/api'
 
 @Injectable({
   providedIn: 'root'
 })
 export class HttpErrorInterceptor implements HttpInterceptor {
-  constructor(private messageService: MessageService) {}
+  // constructor(private messageService: MessageService) {}
 
   intercept(
     request: HttpRequest<any>,
@@ -35,12 +35,13 @@ export class HttpErrorInterceptor implements HttpInterceptor {
           errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`
         }
 
-        this.messageService.add({
-          severity: 'error',
-          summary: 'ERROR',
-          detail: errorMessage,
-          life: 5000
-        })
+        // TODO: replace
+        // this.messageService.add({
+        //   severity: 'error',
+        //   summary: 'ERROR',
+        //   detail: errorMessage,
+        //   life: 5000
+        // })
 
         return throwError(errorMessage)
       })

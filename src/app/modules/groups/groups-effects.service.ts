@@ -12,13 +12,12 @@ import * as groupsActions from './groups.actions'
 // Models
 import { Group } from './group.model'
 // Services
-import { MessageService } from 'primeng/api'
+// import { MessageService } from 'primeng/api'
 import { GroupsService } from './groups.service'
 
 @Injectable()
 export class GroupsEffectsService {
   constructor(
-    private messageService: MessageService,
     private router: Router,
     private actions$: Actions,
     private groupsService: GroupsService
@@ -47,12 +46,14 @@ export class GroupsEffectsService {
     () =>
       this.actions$.pipe(
         ofType(groupsActions.createSuccess),
-        tap(({ group }) =>
-          this.messageService.add({
-            severity: 'success',
-            summary: 'Success',
-            detail: `${group.name} successfully added`
-          })
+        tap(
+          ({ group }) => null
+          // TODO: replace
+          // this.messageService.add({
+          //   severity: 'success',
+          //   summary: 'Success',
+          //   detail: `${group.name} successfully added`
+          // })
         )
       ),
     { dispatch: false }
@@ -62,13 +63,15 @@ export class GroupsEffectsService {
     () =>
       this.actions$.pipe(
         ofType(groupsActions.createFailure),
-        tap(({ error }) =>
-          this.messageService.add({
-            severity: 'error',
-            summary: 'ERROR',
-            detail: error.message,
-            life: 5000
-          })
+        tap(
+          ({ error }) => null
+          // TODO: replace
+          // this.messageService.add({
+          //   severity: 'error',
+          //   summary: 'ERROR',
+          //   detail: error.message,
+          //   life: 5000
+          // })
         )
       ),
     { dispatch: false }

@@ -12,13 +12,12 @@ import * as gamesActions from './games.actions'
 // Models
 import { Game } from './game.model'
 // Services
-import { MessageService } from 'primeng/api'
+// import { MessageService } from 'primeng/api'
 import { GamesService } from './games.service'
 
 @Injectable()
 export class GamesEffectsService {
   constructor(
-    private messageService: MessageService,
     private router: Router,
     private actions$: Actions,
     private gamesService: GamesService
@@ -47,12 +46,14 @@ export class GamesEffectsService {
     () =>
       this.actions$.pipe(
         ofType(gamesActions.createSuccess),
-        tap(({ game }) =>
-          this.messageService.add({
-            severity: 'success',
-            summary: 'Success',
-            detail: `${game.name} successfully added`
-          })
+        tap(
+          ({ game }) => null
+          // TODO: replace
+          // this.messageService.add({
+          //   severity: 'success',
+          //   summary: 'Success',
+          //   detail: `${game.name} successfully added`
+          // })
         )
       ),
     { dispatch: false }
@@ -62,13 +63,15 @@ export class GamesEffectsService {
     () =>
       this.actions$.pipe(
         ofType(gamesActions.createFailure),
-        tap(({ error }) =>
-          this.messageService.add({
-            severity: 'error',
-            summary: 'ERROR',
-            detail: error.message,
-            life: 5000
-          })
+        tap(
+          ({ error }) => null
+          // TODO: replace
+          // this.messageService.add({
+          //   severity: 'error',
+          //   summary: 'ERROR',
+          //   detail: error.message,
+          //   life: 5000
+          // })
         )
       ),
     { dispatch: false }
@@ -97,12 +100,15 @@ export class GamesEffectsService {
     () =>
       this.actions$.pipe(
         ofType(gamesActions.destroySuccess),
-        tap(({ game }) =>
-          this.messageService.add({
-            severity: 'success',
-            summary: 'Success',
-            detail: `${game.name} successfully deleted`
-          })
+        tap(
+          ({ game }) =>
+            // TODO: replace
+            null
+          // this.messageService.add({
+          //   severity: 'success',
+          //   summary: 'Success',
+          //   detail: `${game.name} successfully deleted`
+          // })
         )
       ),
     { dispatch: false }
@@ -112,13 +118,15 @@ export class GamesEffectsService {
     () =>
       this.actions$.pipe(
         ofType(gamesActions.destroyFailure),
-        tap(({ error }) =>
-          this.messageService.add({
-            severity: 'error',
-            summary: 'ERROR',
-            detail: error.message,
-            life: 5000
-          })
+        tap(
+          ({ error }) => null
+          // TODO: replace
+          // this.messageService.add({
+          //   severity: 'error',
+          //   summary: 'ERROR',
+          //   detail: error.message,
+          //   life: 5000
+          // })
         )
       ),
     { dispatch: false }

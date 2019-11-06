@@ -1,23 +1,17 @@
-<p-toolbar>
+<!-- TODO: replace -->
+<!-- <p-toolbar>
   <div class="toolbar-grid">
     <div style="text-align: left;">
-      <i
-        class="pi pi-home"
-        style="font-size: 36px; color: white; cursor: pointer;"
-        routerLink="/login"
-      ></i>
+      <i class="pi pi-home" style="font-size: 36px; color: white; cursor: pointer;" routerLink="/dashboard"></i>
     </div>
     <div style="font-size: 30px; color: white; text-align: center;">
       {{ headerTitle }}
     </div>
     <div style="text-align: right;">
-      <div (click)="logout()">logout</div>
-      <p-menu #menu [popup]="true" [model]="items"></p-menu>
-      <i
-        class="pi pi-bars"
-        style="font-size: 36px; color: white; cursor: pointer;"
-        (click)="menu.toggle($event)"
-      ></i>
+      <div *ngIf="loggedIn">
+        <p-menu #menu [popup]="true" [model]="items"></p-menu>
+        <i class="pi pi-bars" style="font-size: 36px; color: white; cursor: pointer;" (click)="menu.toggle($event)"></i>
+      </div>
     </div>
   </div>
-</p-toolbar>
+</p-toolbar> -->

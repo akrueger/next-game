@@ -1,35 +1,37 @@
 // Angular
-import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core'
-// PrimeNG
-import { MenuItem } from 'primeng/api'
+import { Component, OnInit, OnDestroy } from '@angular/core'
+// RxJs
+import { Subject } from 'rxjs'
+import { takeUntil } from 'rxjs/operators'
 // Services
 import { Auth0Service } from '../auth0/auth0.service'
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnDestroy {
+  private unsubscribe$: Subject<void> = new Subject<void>()
+  loggedIn: boolean
   headerTitle: string
-  items: MenuItem[]
 
-  constructor(private authService: Auth0Service) {}
-
-  ngOnInit() {
-    this.items = [
-      {
-        items: [{ label: 'Logout', icon: 'pi pi-eject' }]
-      }
-    ]
+  constructor(private authService: Auth0Service) {
+    authService.loggedIn$
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe(loggedIn => {
+        this.loggedIn = loggedIn
+      })
   }
 
-  login() {
-    this.authService.login()
-  }
+  ngOnInit() {}
 
-  logout() {
+  private logout() {
     this.authService.logout()
+  }
+
+  ngOnDestroy() {
+    this.unsubscribe$.next()
+    this.unsubscribe$.complete()
   }
 }

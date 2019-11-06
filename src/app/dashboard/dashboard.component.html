@@ -1,8 +1,15 @@
 <section class="bubble-main">
   <form [formGroup]="gameForm">
-    <input formControlName="gameName" type="text" />
-    <div class="bubble">
-      <p-button label="Add Game" (click)="createGame()"></p-button>
+    <mat-form-field appearance="outline">
+      <mat-label>Game</mat-label>
+      <input formControlName="gameName" matInput>
+      <mat-hint>Hint/Error Text</mat-hint>
+      <mat-error *ngIf="gameForm.get('gameName').hasError('required')">
+        Game name is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <div>
+      <button mat-stroked-button (click)="createGame()">Add Game</button>
     </div>
   </form>
 
@@ -11,12 +18,13 @@
     {{ game.name }}
   </div>
 
-  <input type="text" #groupInput />
-  <div class="bubble">
-    <p-button
-      label="Add Group"
-      (click)="createGroup(groupInput.value)"
-    ></p-button>
+  <mat-form-field appearance="outline">
+    <mat-label>Group</mat-label>
+    <input matInput #groupInput>
+    <mat-hint>Hint/Error Text</mat-hint>
+  </mat-form-field>
+  <div>
+    <button mat-stroked-button (click)="createGroup(groupInput.value)">Add Group</button>
   </div>
 
   <h3>YOUR GROUPS</h3>

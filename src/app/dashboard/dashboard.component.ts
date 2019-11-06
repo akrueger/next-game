@@ -1,7 +1,7 @@
 // Angular
 import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core'
 import { Router } from '@angular/router'
-import { FormGroup, FormControl } from '@angular/forms'
+import { FormGroup, FormControl, Validators } from '@angular/forms'
 // RxJS
 import { Observable } from 'rxjs'
 // ngRx
@@ -43,7 +43,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     this.gameForm = new FormGroup({
-      gameName: new FormControl()
+      gameName: new FormControl('', Validators.required)
     })
   }
 
