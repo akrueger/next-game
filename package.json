@@ -14,7 +14,9 @@
     "db:backup:schema": "pg_dump --file 'db/backups/next-game-schema.sql' --host 'localhost' --port '5432' --username 'akrueger' --no-password --verbose --format=p --schema-only --no-owner --create --clean --no-privileges --no-tablespaces --no-unlogged-table-data 'next-game'",
     "db:backup:data": "pg_dump --file 'db/backups/next-game-data.sql' --host 'localhost' --port '5432' --username 'akrueger' --no-password --verbose --format=p --data-only --no-privileges --no-tablespaces --no-unlogged-table-data 'next-game'",
     "db:restore:schema": "psql -f db/backups/next-game-schema.sql",
-    "db:restore:data": "psql -d next-game -f db/backups/next-game-data.sql"
+    "db:restore:data": "psql -d next-game -f db/backups/next-game-data.sql",
+    "prepare": "yarn run snyk-protect",
+    "snyk-protect": "snyk-protect"
   },
   "lint-staged": {
     "*.+(ts|js|json)": [
@@ -26,7 +28,7 @@
     "@angular/cdk": "^8.2.3",
     "@angular/common": "~8.2.8",
     "@angular/compiler": "~8.2.8",
-    "@angular/core": "~8.2.8",
+    "@angular/core": "~11.0.5",
     "@angular/forms": "~8.2.8",
     "@angular/material": "^8.2.3",
     "@angular/platform-browser": "~8.2.8",
@@ -45,11 +47,11 @@
     "core-js": "^3.0.1",
     "express": "^4.17.1",
     "express-http-to-https": "^1.1.4",
-    "express-jwt": "^5.3.1",
+    "express-jwt": "^6.0.0",
     "express-pino-logger": "^4.0.0",
     "helmet": "^3.21.1",
     "jwks-rsa": "^1.6.0",
-    "massive": "^6.1.0",
+    "massive": "^6.7.0",
     "nanoid": "^2.1.1",
     "ngrx-store-localstorage": "^8.0.0",
     "normalize.css": "^8.0.1",
@@ -58,7 +60,8 @@
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
     "wicg-inert": "^3.0.0",
-    "zone.js": "~0.9.1"
+    "zone.js": "~0.9.1",
+    "@snyk/protect": "latest"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.803.6",
@@ -77,6 +80,8 @@
     "pino-pretty": "^3.2.1",
     "prettier": "^1.18.2",
     "ts-node": "~7.0.0",
-    "typescript": "~3.5.3"
-  }
+    "typescript": "~3.5.3",
+    "snyk": "^1.1025.0"
+  },
+  "snyk": true
 }
