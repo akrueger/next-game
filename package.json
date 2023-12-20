@@ -48,7 +48,7 @@
     "express-jwt": "^5.3.1",
     "express-pino-logger": "^4.0.0",
     "helmet": "^3.21.1",
-    "jwks-rsa": "^1.6.0",
+    "jwks-rsa": "^1.8.0",
     "massive": "^6.1.0",
     "nanoid": "^2.1.1",
     "ngrx-store-localstorage": "^8.0.0",
